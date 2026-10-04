@@ -1,0 +1,27 @@
+TOGA CROP DOCTOR
+CNN MODEL EVALUATION REPORT
+============================================================
+
+Test Accuracy: 91.58%
+
+                               precision    recall  f1-score   support
+
+        Pepper_Bacterial_Spot     0.8739    0.9604    0.9151       101
+               Pepper_Healthy     0.9371    1.0000    0.9675       149
+          Potato_Early_Blight     0.9143    0.9600    0.9366       100
+               Potato_Healthy     1.0000    0.5625    0.7200        16
+           Potato_Late_Blight     0.9012    0.7300    0.8066       100
+        Tomato_Bacterial_Spot     0.9652    0.9065    0.9349       214
+          Tomato_Early_Blight     0.7925    0.8400    0.8155       100
+               Tomato_Healthy     0.9195    1.0000    0.9581       160
+           Tomato_Late_Blight     0.9006    0.8490    0.8740       192
+             Tomato_Leaf_Mold     0.9762    0.8542    0.9111        96
+          Tomato_Mosaic_Virus     0.9474    0.9474    0.9474        38
+    Tomato_Septoria_Leaf_Spot     0.8830    0.9326    0.9071       178
+          Tomato_Spider_Mites     0.8671    0.8155    0.8405       168
+           Tomato_Target_Spot     0.8231    0.8521    0.8374       142
+Tomato_Yellow_Leaf_Curl_Virus     0.9672    0.9888    0.9779       537
+
+                     accuracy                         0.9158      2291
+                    macro avg     0.9112    0.8799    0.8900      2291
+                 weighted avg     0.9167    0.9158    0.9146      2291
