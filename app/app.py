@@ -178,6 +178,7 @@ def get_confidence_level(confidence):
 
 st.markdown(
     """
+    <style>
   
 /* =====================================================
    AYUBA CROP DOCTOR — CLEAN RESPONSIVE CSS
@@ -584,7 +585,7 @@ img {
     .footer {
         font-size: 11px !important;
     }
-}
+    </style>
     """,
     unsafe_allow_html=True
 )
