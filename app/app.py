@@ -172,300 +172,419 @@ def get_confidence_level(confidence):
 
         return "Low Confidence"
 
-
 # ============================================================
 # CUSTOM CSS
 # ============================================================
 
 st.markdown(
     """
-    <style>
+  
+/* =====================================================
+   AYUBA CROP DOCTOR — CLEAN RESPONSIVE CSS
+   Preserves the original blue, green and light theme
+   ===================================================== */
 
-    /* ========================================================
-       MAIN APP
-       ======================================================== */
+* {
+    box-sizing: border-box;
+}
 
-    .main {
-        background-color: #f7f9fc;
-    }
+.main {
+    background-color: #f7f9fc;
+}
 
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    max-width: 100%;
+}
+
+.main-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #0b4f6c !important;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #52727d !important;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0b4f6c !important;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.section-heading {
+    color: #0b4f6c !important;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.info-box,
+.result-box,
+.result-metric,
+.confidence-box,
+.top-prediction-box,
+.analysis-guide,
+.history-box {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.info-box {
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #d9e5ea;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(11, 79, 108, 0.06);
+}
+
+.info-box h2 {
+    color: #0b4f6c !important;
+}
+
+.info-box h3 {
+    color: #087f5b !important;
+}
+
+.info-box p,
+.info-box strong,
+.info-box li {
+    color: #365866 !important;
+    -webkit-text-fill-color: #365866 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    line-height: 1.65;
+}
+
+.result-box {
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #b8d8e3;
+    background-color: #eef8fb;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.result-metric {
+    background-color: #f0f7fa;
+    border: 1px solid #d7e8ed;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.result-metric-title {
+    font-size: 13px;
+    color: #5f6b72 !important;
+}
+
+.result-metric-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0b4f6c !important;
+    overflow-wrap: anywhere;
+}
+
+.confidence-box {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #b7dfd0;
+    background-color: #effaf5;
+    color: #087f5b !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.top-prediction-box {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #d9e5ea;
+    background-color: #ffffff;
+    color: #365866 !important;
+    margin-bottom: 10px;
+}
+
+.analysis-guide {
+    background-color: #eef7f8;
+    border-left: 5px solid #087f5b;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: #365866 !important;
+}
+
+.analysis-guide strong {
+    color: #0b4f6c !important;
+}
+
+.history-box {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #d9e5ea;
+    background-color: #ffffff;
+    color: #365866 !important;
+    margin-bottom: 10px;
+}
+
+[data-testid="stSidebar"] {
+    background-color: #eef7f8;
+    border-right: 1px solid #d4e5e8;
+}
+
+[data-testid="stSidebar"] h1 {
+    color: #0b4f6c !important;
+    font-weight: 800;
+}
+
+[data-testid="stSidebar"] p {
+    color: #52727d !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label {
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] {
+    background-color: #0b4f6c;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] p {
+    color: #ffffff !important;
+}
+
+.stButton > button {
+    border-radius: 10px;
+    border: 1px solid #0b4f6c;
+    background-color: #0b4f6c;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 8px 20px;
+    min-height: 44px;
+}
+
+.stButton > button:hover {
+    background-color: #087f5b;
+    border-color: #087f5b;
+    color: #ffffff !important;
+}
+
+[data-testid="stFileUploader"] {
+    background-color: #ffffff;
+    border: 1px solid #cfe0e5;
+    border-radius: 12px;
+    padding: 8px;
+    width: 100%;
+    max-width: 100%;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+[data-testid="stAlert"] p,
+[data-testid="stAlert"] li,
+[data-testid="stAlert"] div {
+    color: #35434a !important;
+    -webkit-text-fill-color: #35434a !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    line-height: 1.65 !important;
+}
+
+.footer {
+    text-align: center;
+    color: #52727d !important;
+    font-size: 14px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+hr {
+    border-color: #d9e5ea;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* TABLET AND MOBILE */
+
+@media screen and (max-width: 768px) {
     .block-container {
-        padding-top: 2rem;
-        padding-bottom: 3rem;
+        padding: 1rem 0.8rem 2rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
-
-
-    /* ========================================================
-       MAIN TITLE
-       ======================================================== */
 
     .main-title {
-        font-size: 42px;
-        font-weight: 800;
-        color: #0b4f6c;
-        margin-bottom: 5px;
-        letter-spacing: 0.5px;
+        font-size: 29px !important;
+        line-height: 1.25 !important;
     }
 
     .subtitle {
-        font-size: 20px;
-        color: #52727d;
-        margin-bottom: 25px;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
     }
 
-
-    /* ========================================================
-       SECTION TITLES
-       ======================================================== */
-
     .section-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #0b4f6c;
-        margin-top: 20px;
-        margin-bottom: 12px;
+        font-size: 22px !important;
+        line-height: 1.35 !important;
     }
 
     .section-heading {
-        color: #0b4f6c;
-        font-weight: 700;
-        font-size: 20px;
-        margin-bottom: 8px;
+        font-size: 18px !important;
+        line-height: 1.4 !important;
     }
 
-
-    /* ========================================================
-       INFORMATION BOXES
-       ======================================================== */
-
     .info-box {
-        padding: 20px;
-        border-radius: 14px;
-        border: 1px solid #d9e5ea;
-        background-color: #ffffff;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 8px rgba(11, 79, 108, 0.06);
+        padding: 15px !important;
     }
 
     .info-box h2 {
-        color: #0b4f6c;
+        font-size: 21px !important;
+        line-height: 1.4 !important;
     }
 
     .info-box h3 {
-        color: #087f5b;
+        font-size: 18px !important;
+        line-height: 1.4 !important;
     }
 
-
-    /* ========================================================
-       RESULT BOX
-       ======================================================== */
+    .info-box p,
+    .analysis-guide,
+    .history-box,
+    .top-prediction-box {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+    }
 
     .result-box {
-        padding: 25px;
-        border-radius: 14px;
-        border: 1px solid #b8d8e3;
-        background-color: #eef8fb;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 3px 10px rgba(11, 79, 108, 0.08);
+        padding: 15px !important;
     }
-
-
-    /* ========================================================
-       RESULT METRICS
-       ======================================================== */
 
     .result-metric {
-        background-color: #f0f7fa;
-        border: 1px solid #d7e8ed;
-        border-radius: 12px;
-        padding: 16px;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .result-metric-title {
-        font-size: 13px;
-        color: #5f6b72;
-        margin-bottom: 6px;
+        padding: 12px !important;
     }
 
     .result-metric-value {
-        font-size: 20px;
-        font-weight: 700;
-        color: #0b4f6c;
+        font-size: 17px !important;
     }
 
-
-    /* ========================================================
-       CONFIDENCE BOX
-       ======================================================== */
-
-    .confidence-box {
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #b7dfd0;
-        background-color: #effaf5;
-        color: #087f5b;
-        margin-top: 15px;
-        margin-bottom: 15px;
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: wrap !important;
+        gap: 0.8rem !important;
     }
 
-
-    /* ========================================================
-       TOP PREDICTIONS
-       ======================================================== */
-
-    .top-prediction-box {
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #d9e5ea;
-        background-color: #ffffff;
-        margin-bottom: 10px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    [data-testid="column"] {
+        min-width: 0 !important;
+        box-sizing: border-box !important;
     }
 
-
-    /* ========================================================
-       ANALYSIS GUIDE
-       ======================================================== */
-
-    .analysis-guide {
-        background-color: #eef7f8;
-        border-left: 5px solid #087f5b;
-        border-radius: 10px;
-        padding: 15px;
-        margin-top: 15px;
-        margin-bottom: 20px;
-    }
-
-
-    /* ========================================================
-       HISTORY
-       ======================================================== */
-
-    .history-box {
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #d9e5ea;
-        background-color: #ffffff;
-        margin-bottom: 10px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-    }
-
-
-    /* ========================================================
-       SIDEBAR
-       ======================================================== */
-
-    [data-testid="stSidebar"] {
-        background-color: #eef7f8;
-        border-right: 1px solid #d4e5e8;
-    }
-
-    [data-testid="stSidebar"] h1 {
-        color: #0b4f6c;
-        font-weight: 800;
-    }
-
-    [data-testid="stSidebar"] p {
-        color: #52727d;
-    }
-
-
-    /* ========================================================
-       SIDEBAR NAVIGATION
-       ======================================================== */
-
-    [data-testid="stSidebar"] div[role="radiogroup"] label {
-        padding: 10px 12px;
-        border-radius: 10px;
-        margin-bottom: 5px;
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
-
-    [data-testid="stSidebar"] div[role="radiogroup"] label:hover {
-        background-color: #d9eef2;
-    }
-
-    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] {
-        background-color: #0b4f6c;
-        color: #ffffff;
-        font-weight: 700;
-        box-shadow: 0 3px 8px rgba(11, 79, 108, 0.20);
-    }
-
-    [data-testid="stSidebar"] div[role="radiogroup"] label[data-checked="true"] p {
-        color: #ffffff !important;
-    }
-
-
-    /* ========================================================
-       BUTTONS
-       ======================================================== */
-
+    .stButton,
     .stButton > button {
-        border-radius: 10px;
-        border: 1px solid #0b4f6c;
-        background-color: #0b4f6c;
-        color: #ffffff;
-        font-weight: 600;
-        padding: 8px 20px;
-        transition: all 0.2s ease;
+        max-width: 100% !important;
     }
-
-    .stButton > button:hover {
-        background-color: #087f5b;
-        border-color: #087f5b;
-        color: #ffffff;
-        transform: translateY(-1px);
-    }
-
-
-    /* ========================================================
-       FILE UPLOADER
-       ======================================================== */
 
     [data-testid="stFileUploader"] {
-        background-color: #ffffff;
-        border: 1px solid #cfe0e5;
-        border-radius: 12px;
-        padding: 8px;
+        padding: 6px !important;
     }
-
-
-    /* ========================================================
-       ALERTS
-       ======================================================== */
-
-    [data-testid="stAlert"] {
-        border-radius: 10px;
-    }
-
-
-    /* ========================================================
-       FOOTER
-       ======================================================== */
 
     .footer {
-        text-align: center;
-        color: #52727d;
-        font-size: 14px;
-        padding-top: 30px;
-        padding-bottom: 10px;
+        font-size: 12px !important;
+    }
+}
+
+/* SMALL PHONES */
+
+@media screen and (max-width: 480px) {
+    .block-container {
+        padding: 0.8rem 0.65rem 1.5rem !important;
     }
 
-
-    /* ========================================================
-       DIVIDERS
-       ======================================================== */
-
-    hr {
-        border-color: #d9e5ea;
+    .main-title {
+        font-size: 25px !important;
     }
 
-    </style>
+    .subtitle {
+        font-size: 14px !important;
+    }
+
+    .section-title {
+        font-size: 20px !important;
+    }
+
+    .info-box {
+        padding: 13px !important;
+        border-radius: 10px !important;
+    }
+
+    .info-box p,
+    .analysis-guide,
+    .history-box,
+    .top-prediction-box {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+    }
+
+    .info-box h2 {
+        font-size: 19px !important;
+    }
+
+    .info-box h3 {
+        font-size: 17px !important;
+    }
+
+    [data-testid="stAlert"] p,
+    [data-testid="stAlert"] div {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+    }
+
+    .result-metric {
+        padding: 10px !important;
+    }
+
+    .result-metric-value {
+        font-size: 15px !important;
+    }
+
+    .footer {
+        font-size: 11px !important;
+    }
+}
     """,
     unsafe_allow_html=True
 )
